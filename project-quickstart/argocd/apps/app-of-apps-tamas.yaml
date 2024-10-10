@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps-tamas
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: project-quickstart-demo
+  syncPolicy:
+    automated:
+      prune: true
+  source:
+    repoURL: https://github.com/dhpup/argocd-project-tamas.git
+    targetRevision: main
+    path: apps
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: argocd
