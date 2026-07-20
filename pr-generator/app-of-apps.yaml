@@ -3,7 +3,9 @@ kind: Application
 metadata:
   name: app-of-apps-pr-generator
 spec:
-  project: generator-demo
+  # Bootstrap app-of-apps runs in the built-in `default` project; it deploys the
+  # `pr-generator-demo` AppProject (below, in argocd/) that the generated apps use.
+  project: default
   syncPolicy:
     automated: {}
   source:

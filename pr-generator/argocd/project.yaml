@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pr-generator-demo
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Home for the ephemeral preview apps created by the PR generator.
+  # Constrain where apps in this project may pull from. (See
+  # multi-tenant-project-rbac for a tightly locked-down project example.)
+  sourceRepos:
+  - https://github.com/dhpup/akuity-examples.git
+  destinations:
+  - name: mac2
+    namespace: 'pr-generator'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'

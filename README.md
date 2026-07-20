@@ -22,6 +22,8 @@ deploys.
 | [`pr-generator`](pr-generator/) | `ApplicationSet` pull-request generator that spins up preview apps for PRs labeled `preview`. |
 | [`dynamic-elements`](dynamic-elements/) | `ApplicationSet` matrix + list generator using `elementsYaml` to build elements dynamically from a Git file. |
 | [`progressive-syncs`](progressive-syncs/) | `ApplicationSet` with progressive sync rollout ordering across `dev` → `stage` → `prod`. |
+| [`sync-waves-and-hooks`](sync-waves-and-hooks/) | Ordering a sync with **sync waves** plus **PreSync/PostSync resource hooks** (migration + smoke-test Jobs). |
+| [`multi-source-application`](multi-source-application/) | A **multi-source** `Application`: an upstream Helm chart configured by a `values.yaml` from a separate git repo via `$values`. |
 | [`demos/workflows-infrastructure`](demos/workflows-infrastructure/) | Full platform demo: installs Argo Events, Argo Workflows, Argo Rollouts, External Secrets, and Reloader, plus a cluster-upgrader and a post-sync workflow-validation example. See its [readme](demos/workflows-infrastructure/readme.md). |
 
 ## Usage

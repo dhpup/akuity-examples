@@ -3,18 +3,36 @@ kind: AppProject
 metadata:
   name: project-b
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
+  description: Tenant B — least-privilege project scoped to its own repo, cluster, namespace and resource kinds.
+
+  # Only this repo may be deployed by tenant B.
   sourceRepos:
-  - '*'
+  - https://github.com/dhpup/guestbook-deploy.git
+
+  # Tenant B may deploy only to its own namespace on the mac1 cluster.
   destinations:
-  - namespace: '*'
-    server: '*'
+  - name: mac1
+    namespace: guestbook-b
+
+  # Tenants may not manage cluster-scoped resources, except creating their own
+  # namespace (needed by the CreateNamespace=true sync option).
   clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
+  - group: ''
+    kind: Namespace
+
+  # Restrict namespaced resources to exactly the kinds the guestbook renders.
   namespaceResourceWhitelist:
-  - group: '*'
-    kind: '*'
+  - group: ''
+    kind: Service
+  - group: apps
+    kind: Deployment
+  - group: networking.k8s.io
+    kind: Ingress
+
+  # RBAC: this role can only view/sync applications within project-b.
   roles:
   - name: project-b-role
     policies:

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: git-directory-generator-demo
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Home for apps generated from the git directory generator across clusters.
+  sourceRepos:
+  - https://github.com/dhpup/akuity-examples.git
+  # This example fans out across clusters, so both are allowed destinations.
+  destinations:
+  - name: mac1
+    namespace: '*'
+  - name: mac2
+    namespace: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'

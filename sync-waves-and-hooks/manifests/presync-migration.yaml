@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migration
+  annotations:
+    # PreSync hooks run to completion BEFORE any wave is applied — the classic
+    # home for schema migrations and pre-flight checks. If this Job fails, the
+    # sync stops here and the workload is never applied.
+    argocd.argoproj.io/hook: PreSync
+    # Clean the Job up once it succeeds so the next sync starts fresh.
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: migrate
+        image: busybox:1.36
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo "Running database migration..."; sleep 5; echo "Migration complete."

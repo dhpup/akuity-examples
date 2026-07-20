@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: smoke-test
+  annotations:
+    # PostSync hooks run only after every wave has synced AND reported Healthy —
+    # a good place for smoke tests or deployment notifications.
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: smoke-test
+        image: busybox:1.36
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo "Probing whoami service..."; wget -qO- http://whoami && echo "Smoke test passed."

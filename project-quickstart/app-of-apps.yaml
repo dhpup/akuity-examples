@@ -3,7 +3,10 @@ kind: Application
 metadata:
   name: project-quickstart
 spec:
-  project: project-onboarding
+  # Bootstrap runs in the built-in `default` project; it deploys the
+  # `project-quickstart-demo` AppProject (argocd/projects/) that scaffolded
+  # project app-of-apps are created under.
+  project: default
   syncPolicy:
     automated:
       prune: true

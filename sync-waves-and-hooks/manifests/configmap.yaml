@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  annotations:
+    # Wave -1: applied before the workload that consumes it. Lower waves sync first.
+    argocd.argoproj.io/sync-wave: "-1"
+data:
+  GREETING: "hello from sync-waves-and-hooks"

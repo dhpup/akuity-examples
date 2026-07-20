@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: project-quickstart-demo
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Umbrella project that onboarded (scaffolded) project app-of-apps live under.
+  # Onboarding spans many per-project repos, so scope to the org rather than a
+  # single repo. Tighten per-tenant as in multi-tenant-project-rbac.
+  sourceRepos:
+  - https://github.com/dhpup/*
+  destinations:
+  - name: '*'
+    namespace: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'

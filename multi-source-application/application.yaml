@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: multi-source-application
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: podinfo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+  sources:
+  # 1) The Helm chart, pulled straight from the upstream chart repo. We do NOT
+  #    fork or vendor it — only the values below are ours.
+  - repoURL: https://stefanprodan.github.io/podinfo
+    chart: podinfo
+    targetRevision: 6.14.0
+    helm:
+      # Values live in the OTHER source, referenced by its `ref` name ($values).
+      valueFiles:
+      - $values/multi-source-application/values/podinfo-values.yaml
+  # 2) This git repo, attached only to supply the values file. `ref: values`
+  #    gives it the name used by the $values path above; it renders nothing on
+  #    its own (no `path`/`chart`).
+  - repoURL: https://github.com/dhpup/akuity-examples.git
+    targetRevision: main
+    ref: values

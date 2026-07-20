@@ -3,7 +3,10 @@ kind: Application
 metadata:
   name: app-of-apps-git-directory-multicluster-generator
 spec:
-  project: generator-demo
+  # Bootstrap app-of-apps runs in the built-in `default` project; it deploys the
+  # `git-directory-generator-demo` AppProject (below, in argocd/) used by the
+  # generated apps.
+  project: default
   syncPolicy:
     automated: {}
   source:

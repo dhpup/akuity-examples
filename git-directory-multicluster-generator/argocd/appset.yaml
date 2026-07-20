@@ -16,7 +16,7 @@ spec:
     metadata:
       name: '{{.path.basename}}-{{index .path.segments 2}}'
     spec:
-      project: "generator-demo"
+      project: "git-directory-generator-demo"
       source:
         repoURL: 'https://github.com/dhpup/akuity-examples.git'
         targetRevision: HEAD

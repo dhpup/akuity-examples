@@ -1,0 +1,9 @@
+# Values for the upstream podinfo chart, kept in git alongside our other config
+# and injected into the chart via the Application's $values source ref.
+replicaCount: 2
+ui:
+  message: "Deployed via an Argo CD multi-source Application"
+resources:
+  requests:
+    cpu: 50m
+    memory: 32Mi

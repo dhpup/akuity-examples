@@ -25,7 +25,7 @@ spec:
         repoURL: 'https://github.com/dhpup/akuity-examples.git'
         targetRevision: '{{.head_sha}}'
         path: pr-generator/configs
-      project: "generator-demo"
+      project: "pr-generator-demo"
       destination:
         name: mac2
         namespace: pr-generator
