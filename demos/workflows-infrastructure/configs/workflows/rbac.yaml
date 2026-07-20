@@ -1,0 +1,22 @@
+# Grants the built-in `admin` ClusterRole within the `argo` namespace ONLY.
+# Scoped down from the original cluster-wide ClusterRoleBinding: a namespace
+# RoleBinding gives workflow pods (running as the default / argo service
+# accounts) full rights inside `argo` to manage their step resources, without
+# handing them admin across the whole cluster. Widen deliberately if a workflow
+# genuinely needs to act in other namespaces.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: workflows-admin
+  namespace: argo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: argo
+- kind: ServiceAccount
+  name: argo
+  namespace: argo

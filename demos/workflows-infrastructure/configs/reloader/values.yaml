@@ -1,0 +1,2 @@
+# Reloader runs with chart defaults (watches all namespaces for annotated
+# Deployments/ConfigMaps/Secrets). Add overrides here as needed.

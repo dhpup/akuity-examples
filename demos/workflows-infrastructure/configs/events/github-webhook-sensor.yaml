@@ -258,7 +258,7 @@ spec:
                     - name: project
                     - name: zone
                   container:
-                    image: google/cloud-sdk:458.0.1
+                    image: google/cloud-sdk:576.0.0
                     volumeMounts:
                     - name: gcloud-service-account
                       mountPath: "/certs"
@@ -282,7 +282,7 @@ spec:
                     - name: project
                     - name: zone
                   container:
-                    image: google/cloud-sdk:458.0.1
+                    image: google/cloud-sdk:576.0.0
                     volumeMounts:
                     - name: gcloud-service-account
                       mountPath: "/certs"
@@ -318,7 +318,7 @@ spec:
                     - name: project
                     - name: zone
                   container:
-                    image: google/cloud-sdk:458.0.1
+                    image: google/cloud-sdk:576.0.0
                     volumeMounts:
                     - name: gcloud-service-account
                       mountPath: "/certs"

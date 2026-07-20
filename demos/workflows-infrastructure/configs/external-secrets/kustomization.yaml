@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Inflate the upstream External Secrets Operator chart, then add our own
+# store definition. Requires the Argo CD instance to have
+# `kustomize.buildOptions: --enable-helm`.
+helmCharts:
+- name: external-secrets
+  repo: https://charts.external-secrets.io
+  version: 2.8.0
+  releaseName: external-secrets
+  namespace: external-secrets
+  includeCRDs: true
+  valuesFile: values.yaml
+
+# Our own ClusterSecretStore (external-secrets.io/v1).
+resources:
+- secret-store.yaml

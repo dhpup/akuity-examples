@@ -1,4 +1,4 @@
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: postsync-validation-deploy-cm
@@ -118,7 +118,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: ubuntu
-        image: ubuntu:20.04
+        image: ubuntu:24.04
         command:
         - /bin/bash
         - -c

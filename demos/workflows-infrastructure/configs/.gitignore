@@ -1,0 +1,2 @@
+# kustomize --enable-helm downloads charts here at build time; do not commit them
+charts/

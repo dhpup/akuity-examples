@@ -96,7 +96,7 @@ spec:
       successCondition: status.conditions.0.status == True
       failureCondition: status.conditions.0.status == False
       manifest: |
-        apiVersion: external-secrets.io/v1beta1
+        apiVersion: external-secrets.io/v1
         kind: ExternalSecret
         metadata:
           name: color-test
@@ -130,7 +130,7 @@ spec:
       parameters:
       - name: color
     container:
-      image: ubuntu:20.04
+      image: ubuntu:24.04
       command:
       - /bin/bash
       - -c

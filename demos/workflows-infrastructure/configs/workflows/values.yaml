@@ -1,0 +1,18 @@
+# Chart config for argo-workflows. Anything you'd pass to `helm install --values`
+# goes here; kustomize passes it to the chart via valuesFile.
+singleNamespace: false
+
+crds:
+  install: true
+  keep: true
+  # Render minified CRDs inline instead of the full-CRD pre-install hook Job
+  # (the Job downloads CRDs from GitHub at runtime, which doesn't fit GitOps).
+  full: false
+
+server:
+  # Replaces the former kustomize patch: argo-server --auth-mode=server
+  authModes:
+    - server
+  # Replaces the former kustomize patch: NodePort service on 30000 (Workflows UI)
+  serviceType: NodePort
+  serviceNodePort: 30000

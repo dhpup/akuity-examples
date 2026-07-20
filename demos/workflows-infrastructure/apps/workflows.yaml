@@ -8,8 +8,8 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-  sources:
-  - path: demos/workflows-infrastructure/configs/workflows
+  source:
+    path: demos/workflows-infrastructure/configs/workflows
     repoURL: https://github.com/dhpup/akuity-examples.git
     targetRevision: main
   destination:

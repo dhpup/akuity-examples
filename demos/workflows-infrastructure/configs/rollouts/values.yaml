@@ -1,0 +1,4 @@
+# Argo Rollouts runs with chart defaults. Add overrides here as needed, e.g.:
+#
+# dashboard:
+#   enabled: true

@@ -1,0 +1,2 @@
+# External Secrets Operator runs with chart defaults (controller, webhook and
+# cert-controller enabled). Add overrides here as needed.
