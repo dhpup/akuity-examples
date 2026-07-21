@@ -12,9 +12,9 @@ spec:
   sourceRepos:
   - https://github.com/dhpup/guestbook-deploy.git
 
-  # Tenant A may deploy only to its own namespace on the mac1 cluster.
+  # Tenant A may deploy only to its own namespace on the local cluster.
   destinations:
-  - name: mac1
+  - name: in-cluster
     namespace: guestbook-a
 
   # Tenants may not manage cluster-scoped resources, except creating their own

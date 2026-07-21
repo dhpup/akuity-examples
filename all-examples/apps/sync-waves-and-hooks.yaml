@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-sync-waves-and-hooks
+  namespace: argocd
+spec:
+  project: default
+  # Manual sync: deploys only when you choose to sync it from the UI.
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+  source:
+    repoURL: https://github.com/dhpup/akuity-examples.git
+    targetRevision: main
+    path: sync-waves-and-hooks/manifests
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: sync-waves-demo

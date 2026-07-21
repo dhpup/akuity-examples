@@ -12,7 +12,7 @@ spec:
   sourceRepos:
   - https://github.com/dhpup/akuity-examples.git
   destinations:
-  - name: mac2
+  - name: in-cluster
     namespace: 'pr-generator'
   clusterResourceWhitelist:
   - group: ''

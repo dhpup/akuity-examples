@@ -13,5 +13,5 @@ spec:
     repoURL: https://github.com/dhpup/akuity-examples.git
     targetRevision: main
   destination:
-    name: mac1
+    name: in-cluster
     namespace: argo-rollouts

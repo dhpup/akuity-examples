@@ -9,7 +9,30 @@ deploys.
 > source, and pull sample workloads from `github.com/dhpup/guestbook-deploy` (which has
 > `env/dev`, `env/stage`, and `env/prod` overlays).
 
+> Every example targets the built-in local cluster (`in-cluster`) so it runs on any
+> Argo CD / Akuity instance without registering extra clusters. Where an example is
+> *about* multiple clusters (e.g. [`git-directory-multicluster-generator`](git-directory-multicluster-generator/)),
+> its README shows the one-line switch to a real multi-cluster setup.
+
+## Deploy everything, pick in the UI
+
+The [`all-examples`](all-examples/) app-of-apps registers **every** example
+below as a child `Application` with **sync disabled**. Load it once, then choose
+which example to deploy — one sync click each — from the Argo CD UI. This is the
+easiest way to run a demo: the full menu is on screen, but nothing deploys until
+you pick it.
+
+```sh
+kubectl apply -f all-examples/app-of-apps.yaml
+```
+
+See [`all-examples/README.md`](all-examples/) for how it works. To deploy just a
+single example instead, use that example's own `app-of-apps.yaml` (below) — but
+don't apply both entrypoints for the same example against one instance.
+
 ## Examples
+
+Each directory below has its own `README.md` with a full walkthrough.
 
 | Directory | What it demonstrates |
 |---|---|

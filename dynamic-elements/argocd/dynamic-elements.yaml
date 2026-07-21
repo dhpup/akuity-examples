@@ -34,5 +34,5 @@ spec:
           helm:
             releaseName: '{{.releaseName}}'
       destination:
-        name: mac1
+        name: in-cluster
         namespace: '{{.namespace}}'

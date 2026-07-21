@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-workflows-infrastructure
+  namespace: argocd
+spec:
+  project: default
+  # Manual sync: deploys only when you choose to sync it from the UI.
+  # Heavier than the other examples — it installs Argo Workflows/Rollouts/Events,
+  # External Secrets and Reloader. REQUIRES the Argo CD instance to have
+  # `kustomize.buildOptions: --enable-helm` (see the repo README). Syncing this
+  # creates the workflows-infrastructure-demo AppProject and its child apps, which
+  # you then sync individually.
+  source:
+    repoURL: https://github.com/dhpup/akuity-examples.git
+    targetRevision: main
+    path: demos/workflows-infrastructure/apps
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: argocd

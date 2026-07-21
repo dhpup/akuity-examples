@@ -22,7 +22,12 @@ spec:
         targetRevision: HEAD
         path: '{{.path.path}}'
       destination:
-        name: '{{.path.basename}}'
+        # Runs anywhere: every generated app lands on the local cluster, in a
+        # namespace named <cluster-folder>-<app-folder> so the per-cluster
+        # fan-out is still visible. For a TRUE multi-cluster setup, register a
+        # cluster per configs/<app>/<cluster> folder and switch this to:
+        #   name: '{{.path.basename}}'
+        name: in-cluster
         namespace: '{{.path.basename}}-{{index .path.segments 2}}'
       syncPolicy:
         syncOptions:

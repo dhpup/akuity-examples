@@ -15,7 +15,7 @@ spec:
               - path: git-generator/configs/*
           - list:
               elements:
-                - clusterName: mac1
+                - clusterName: in-cluster
                   branch: main
   template:
     metadata:

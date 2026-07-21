@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: all-examples
+  namespace: argocd
+spec:
+  project: default
+  # No `syncPolicy.automated` on purpose. Syncing this parent only CREATES the
+  # child Application objects (one per example under all-examples/apps/) — it
+  # deploys none of the example workloads itself. Every child is also manual, so
+  # after this parent is synced you pick which example to deploy from the Argo CD
+  # UI. That is the whole point: load one app, then choose what to demo.
+  source:
+    repoURL: https://github.com/dhpup/akuity-examples.git
+    targetRevision: main
+    path: all-examples/apps
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: argocd

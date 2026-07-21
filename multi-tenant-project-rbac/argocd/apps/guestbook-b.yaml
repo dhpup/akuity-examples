@@ -15,5 +15,5 @@ spec:
     targetRevision: HEAD
     path: env/dev
   destination:
-    name: mac1
+    name: in-cluster
     namespace: guestbook-b

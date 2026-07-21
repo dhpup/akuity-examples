@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-pr-generator
+  namespace: argocd
+spec:
+  project: default
+  # Manual sync: deploys only when you choose to sync it from the UI.
+  # Note: the PR generator needs a `application-set-secret` with a GitHub token
+  # (see pr-generator/README.md) to actually produce preview apps.
+  source:
+    repoURL: https://github.com/dhpup/akuity-examples.git
+    targetRevision: main
+    path: pr-generator/argocd
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: argocd

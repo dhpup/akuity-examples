@@ -47,5 +47,5 @@ spec:
                   path: /spec/ports/0/nodePort
                   value: {{nodePort}}
       destination:
-        name: mac1
+        name: in-cluster
         namespace: 'postsync-workflow-validation-{{name}}'

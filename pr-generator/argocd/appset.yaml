@@ -27,7 +27,7 @@ spec:
         path: pr-generator/configs
       project: "pr-generator-demo"
       destination:
-        name: mac2
+        name: in-cluster
         namespace: pr-generator
       syncPolicy:
         syncOptions:

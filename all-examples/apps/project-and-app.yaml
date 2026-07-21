@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: reloader
+  name: example-project-and-app
   namespace: argocd
 spec:
-  project: workflows-infrastructure-demo
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+  project: default
+  # Manual sync: deploys only when you choose to sync it from the UI.
   source:
-    path: demos/workflows-infrastructure/configs/reloader
     repoURL: https://github.com/dhpup/akuity-examples.git
     targetRevision: main
+    path: project-and-app/argocd
+    directory:
+      recurse: true
   destination:
     name: in-cluster
-    namespace: reloader
+    namespace: argocd

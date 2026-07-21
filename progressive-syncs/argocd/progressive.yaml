@@ -6,11 +6,11 @@ spec:
   generators:
   - list:
       elements:
-      - cluster: mac1
+      - cluster: in-cluster
         env: dev
-      - cluster: mac1
+      - cluster: in-cluster
         env: stage
-      - cluster: mac1
+      - cluster: in-cluster
         env: prod
   strategy:
     type: RollingSync
